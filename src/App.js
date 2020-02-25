@@ -1,25 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './config/ReactotronConfig';
 
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { SnackbarProvider } from 'notistack';
+import { PersistGate } from 'redux-persist/integration/react';
+import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { green, cyan, red, } from '@material-ui/core/colors';
+
+import { store, persistor } from './store';
+import Routes from './routes';
+import Global from './styles/global';
+import Notifier from '~/components/Notifier';
+
+const snackbarProviderOptions = {
+  vertical: 'top',
+  horizontal: 'right',
+};
+
+const theme = createMuiTheme({
+  palette: {
+    primary: red,
+    secondary: red,
+    error: red,
+  },
+});
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Global />
+        <SnackbarProvider maxSnack={4} anchorOrigin={snackbarProviderOptions}>
+          <ThemeProvider theme={theme}>
+            <BrowserRouter>
+              <Notifier />
+              <Routes />
+            </BrowserRouter>
+          </ThemeProvider>
+        </SnackbarProvider>
+      </PersistGate>
+    </Provider>
   );
 }
 
