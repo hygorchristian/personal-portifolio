@@ -2,11 +2,7 @@ import React from 'react';
 
 import { Container } from './styles';
 
-type ProjectDetailsProps = {
-
-}
-
-function ProjectDetails(props: ProjectDetailsProps) {
+function ProjectDetails() {
   return <Container />
 }
 

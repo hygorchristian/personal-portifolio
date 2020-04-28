@@ -17,8 +17,8 @@ export default createGlobalStyle`
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale;
-    font-family: proxima-nova, sans-serif;
-    background: #15161E;
+    font-family: 'Open Sans', serif;
+    background: #0B0A0D;
     color: #ffffff;
     user-select: none;
   }  
@@ -31,4 +31,16 @@ export default createGlobalStyle`
     background-color: transparent;
     border: none; 
   }  
+  
+  .archivo{
+    font-family: 'Archivo Black', sans-serif;
+  }
+  
+  .helvetica-condensed{
+    font-family: "Londrina Solid";
+  }
+  
+  .MuiTooltip-tooltipPlacementBottom{
+    font-size: 14px !important;
+  }
 `;
